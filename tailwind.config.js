@@ -8,6 +8,10 @@ module.exports = {
         sfProDisplay: ['SFProDisplay-Regular', 'sans-serif'],
       },
     },
+    colors: {
+      lightBlue: '#F7F7F7',
+      lightGrey: '#979797',
+    },
   },
   plugins: [],
 }
