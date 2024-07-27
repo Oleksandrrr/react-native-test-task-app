@@ -11,7 +11,7 @@ export interface Activities {
   rating: number
 }
 
-export async function fetchActivities(): Promise<Activities[]> {
+export const fetchActivities = async (): Promise<Activities[]> => {
   const url = `${Config.API_URL}activities`
   const options = {
     method: 'GET',
@@ -21,8 +21,25 @@ export async function fetchActivities(): Promise<Activities[]> {
   }
   const res = await fetch(url, options)
   if (!res.ok) {
-    throw new Error('Failed to fetch movies')
+    throw new Error('Failed to fetch')
   }
-  const json = await res.json()
+  const json = (await res.json()) as Activities[]
   return json
+}
+
+export const addFavorite = async (id: number): Promise<string | null> => {
+  const res = await fetch(`${Config.API_URL}favorites`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id }),
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch')
+  }
+
+  const json = await res.json()
+  return json as string | null
 }

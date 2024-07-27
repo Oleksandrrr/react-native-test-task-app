@@ -1,24 +1,28 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-// import { RootStackScreenProps } from '@screens/types/root'
-import { RootStackScreenProps } from '@react-navigation/stack'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 import { useNavigation } from '@react-navigation/native'
 import { Activities } from '../../api/api'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { RootStackParamList } from '@screens/types/root'
 
 interface IProps {
   item: Activities
 }
-const ActivitiesListItem = ({ item }: IProps) => {
-  const navigation =
-    useNavigation<RootStackScreenProps<'ActivityDetailsScreen'>>()
+type activitiesScreenProp = StackNavigationProp<
+  RootStackParamList,
+  'ActivityDetailsScreen'
+>
 
-  console.log('I', item)
+const ActivitiesListItem = ({ item }: IProps) => {
+  const navigation = useNavigation<activitiesScreenProp>()
+
+  const handlePress = () => {
+    navigation.navigate('ActivityDetailsScreen', {
+      item,
+    })
+  }
   return (
-    <TouchableOpacity
-      className="flex-co mb-3"
-      onPress={() => navigation.navigate('ActivityDetailsScreen', { item })}
-    >
+    <TouchableOpacity className="flex-co mb-3" onPress={() => handlePress()}>
       <Image
         source={{ uri: item.photoUrl }}
         className="w-full h-40 rounded-2xl"
@@ -36,12 +40,13 @@ const ActivitiesListItem = ({ item }: IProps) => {
         <View className="flex-row justify-between mt-2">
           <View className="flex-row justify-start">
             <Image source={require('../assets/icons/locationIcon.png')} />
-            <Text className="ml-1 text-xs font-sfProDisplay ">Location</Text>
+            <Text className="ml-1 text-xs font-sfProDisplay ">
+              {item.location}
+            </Text>
           </View>
-          <View className="flex-row justify-start align-middle">
+          <View className="flex-row justify-start  content-center">
             <Text className="ml-1 text-sm font-abel ">${item.price}</Text>
-
-            <Text className="ml-1 text-xs font-sfProDisplay text-lightGrey ">
+            <Text className="ml-1 text-xs font-sfProDisplay text-lightGrey text-end">
               / nigth
             </Text>
           </View>
