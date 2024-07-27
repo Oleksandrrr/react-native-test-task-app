@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Abel-Regular.ttf",
+      "sha1": "5a10c588371618fdcd5555b126121a0fb9ec4c26"
+    },
+    {
+      "path": "src/assets/fonts/SRProDisplay-Regular.ttf",
+      "sha1": "e76ce993debe11fca9ad7a8f82022d40bab7074a"
+    }
+  ]
+}
