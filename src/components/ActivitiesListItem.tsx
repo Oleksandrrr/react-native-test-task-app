@@ -27,7 +27,7 @@ const ActivitiesListItem = ({ item }: IProps) => {
         source={{ uri: item.photoUrl }}
         className="w-full h-40 rounded-2xl"
       />
-      <View className="flex-1 rounded-2xl bg-lightBlue px-8 py-8">
+      <View className="flex-1 rounded-2xl bg-lightBlue px-6 pt-4 pb-4">
         <View className="flex-row justify-between">
           <Text className="text-base font-abel ext-base">{item.name}</Text>
           <View className="flex-row items-center justify-center">
@@ -44,7 +44,7 @@ const ActivitiesListItem = ({ item }: IProps) => {
               {item.location}
             </Text>
           </View>
-          <View className="flex-row justify-start  content-center">
+          <View className="flex-row justify-start  content-center items-center">
             <Text className="ml-1 text-sm font-abel ">${item.price}</Text>
             <Text className="ml-1 text-xs font-sfProDisplay text-lightGrey text-end">
               / nigth
