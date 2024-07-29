@@ -1,9 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { Activities } from '../../../api/api'
 
 export type RootStackParamList = {
   Home: undefined
-  ActivityDetailsScreen: { item: Activities }
+  ActivityDetailsScreen: { id: number }
 }
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

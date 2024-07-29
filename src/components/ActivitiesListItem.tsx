@@ -18,7 +18,7 @@ const ActivitiesListItem = ({ item }: IProps) => {
 
   const handlePress = () => {
     navigation.navigate('ActivityDetailsScreen', {
-      item,
+      id: item.id,
     })
   }
   return (

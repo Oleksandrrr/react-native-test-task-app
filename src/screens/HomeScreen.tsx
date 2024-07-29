@@ -1,22 +1,18 @@
-import { useQuery } from '@tanstack/react-query'
-import { fetchActivities } from '../../api/api'
 import ErrorMessage from '../components/ErrorMessage'
 import CustomActivityIndicator from '../components/CustomActivityIndicator'
 
 import ActivitiesList from '../components/ActivitiesList'
+import { useDefaultServiceGetActivities } from '../../openapi/queries'
 
 const HomeScreen = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['activities'],
-    queryFn: fetchActivities,
-  })
+  const { data, isLoading, error } = useDefaultServiceGetActivities()
 
   if (isLoading) {
     return <CustomActivityIndicator />
   }
 
   if (error) {
-    return <ErrorMessage message={error.message} />
+    return <ErrorMessage message="Failed to Get all activities" />
   }
   return <ActivitiesList data={data} />
 }

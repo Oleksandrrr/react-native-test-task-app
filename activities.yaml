@@ -1,0 +1,82 @@
+---
+openapi: 3.0.1
+info:
+  title: Mock Activities API
+  description: A simple mock server for activities and favorites
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: Local server
+paths:
+  '/activities':
+    get:
+      summary: Get all activities
+      responses:
+        '200':
+          description: A list of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    photoUrl:
+                      type: string
+                      example: https://example.com/photo1.jpg
+                    name:
+                      type: string
+                      example: Hiking
+                    description:
+                      type: string
+                      example: A beautiful hiking experience
+                    location:
+                      type: string
+                      example: Mountain
+                    price:
+                      type: number
+                      format: float
+                      example: 50
+                    rating:
+                      type: number
+                      format: float
+                      example: 4.5
+  '/favorites':
+    post:
+      summary: Add an activity to favorites
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+              required:
+                - id
+      responses:
+        '200':
+          description: Favorite added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Activity with id 1 has been added to favorites
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Activity id is required

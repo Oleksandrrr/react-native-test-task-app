@@ -4,7 +4,7 @@ import ListHeaderComponent from './ListHeaderComponent'
 import ActivitiesListItem from './ActivitiesListItem'
 
 interface IProps {
-  data: Activities[] | undefined
+  data: Activities[]
 }
 
 const ActivitiesList = ({ data }: IProps) => {
